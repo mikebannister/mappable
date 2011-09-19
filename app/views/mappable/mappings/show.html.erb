@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>From:</b>
+  <%= @mapping.from %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%= @mapping.to %>
+</p>
+
+<p>
+  <b>Map:</b>
+  <%= @mapping.map %>
+</p>
+
+
+<%= link_to 'Edit', edit_mapping_path(@mapping) %> |
+<%= link_to 'Back', mappings_path %>
