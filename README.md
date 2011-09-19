@@ -36,27 +36,27 @@ Mount the engine
 
 You can use the UI available at the engine's mount point to add new maps and mappings.
 
-Add some records
+### Records ###
 
-    Map
-    ----------------
+#### Map ####
+
     id = 1
     name = account
     from_mapping = legacy
-    to_mapping = system
+    to_mapping = current
     mapping_attribute = name
 
-    Mapping
-    ----------------
+#### Mapping ####
+
     id = 1
     map_id = 1
-    from = moof
-    to = doof
+    from = 'Old Account Name'
+    to = 'New Account Name'
 
-You can map strings in either direction:
+No you can map strings in either direction:
 
-    LegacyAccountName("moof account").to_system # => "doof account"
-    SystemAccountName("doof account").to_legacy # => "moof account"
+    LegacyAccountName("Old Account Name").to_current #=> "New Account Name"
+    CurrentAccountName("New Account Name").to_legacy #=> "Old Account Name"
 
 ## TODO ##
 
