@@ -7,11 +7,11 @@ require "mappable/version"
 Gem::Specification.new do |s|
   s.name        = "mappable"
   s.version     = Mappable::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Mappable."
-  s.description = "TODO: Description of Mappable."
+  s.authors     = ["Mike Bannister"]
+  s.email       = ["mikebannister@gmail.com"]
+  s.homepage    = "https://github.com/mikebannister/mappable"
+  s.summary     = "Lightweight string mappings engine for Rails"
+  s.description = "Lightweight string mappings engine for Rails"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
