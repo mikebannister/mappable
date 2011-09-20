@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(:version => 20110919042056) do
 
   create_table "mappable_maps", :force => true do |t|
     t.string   "name"
-    t.string   "from_mapping"
-    t.string   "to_mapping"
-    t.string   "mapping_attribute"
+    t.string   "from"
+    t.string   "to"
+    t.string   "attr"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -3,7 +3,7 @@ require 'spec_helper'
 module Mappable
   describe MapRoute do
     before do
-      map = Mappable::Map.create!(from_mapping: 'legacy', to_mapping: 'current', name: 'account', mapping_attribute: 'name')
+      map = Mappable::Map.create!(from: 'legacy', to: 'current', name: 'account', attr: 'name')
       Mappable::Mapping.create!(map: map, from: 'moof', to: 'doof')
     end
 

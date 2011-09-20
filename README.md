@@ -25,9 +25,9 @@ This adds schema similar to
 
     create_table "mappable_maps", :force => true do |t|
       t.string   "name"
-      t.string   "from_mapping"
-      t.string   "to_mapping"
-      t.string   "mapping_attribute"
+      t.string   "from"
+      t.string   "to"
+      t.string   "attr"
     end
 
 Mount the engine
@@ -42,9 +42,9 @@ You can use the UI available at the engine's mount point to add new maps and map
 
     id = 1
     name = account
-    from_mapping = legacy
-    to_mapping = current
-    mapping_attribute = name
+    from = legacy
+    to = current
+    attr = name
 
 #### Mapping ####
 
