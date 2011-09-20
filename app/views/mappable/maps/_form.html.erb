@@ -11,22 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :from %><br />
-    <%= f.text_field :from %>
-  </div>
-  <div class="field">
-    <%= f.label :to %><br />
-    <%= f.text_field :to %>
-  </div>
-  <div class="field">
-    <%= f.label :attr %><br />
-    <%= f.text_field :attr %>
-  </div>
+  <table border=0 cellpadding="0" cellspacing="5">
+    <tr>
+      <td>
+        <div class="field">
+          <%= f.label :name, "Map name" %><br />
+          <%= f.text_field :name %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :attr, "Field name" %><br />
+          <%= f.text_field :attr %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="field">
+          <%= f.label :from, "From name" %><br />
+          <%= f.text_field :from %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :to, "To name" %><br />
+          <%= f.text_field :to %>
+        </div>
+      </td>
+    </tr>
+  </table>
   <div class="actions">
     <%= f.submit %>
   </div>
