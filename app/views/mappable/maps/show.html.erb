@@ -1,23 +1,25 @@
-<p>
-  <b>Name:</b>
-  <%= @map.subject %>
-</p>
+<h2><%= @map.subject.humanize.titleize %> <%= @map.attr.humanize.titleize %> Map</h2>
 
-<p>
-  <b>From mapping:</b>
-  <%= @map.from %>
-</p>
+<h3>Maps <em><%= @map.from %></em> to <em><%= @map.to %></em></h3>
 
-<p>
-  <b>To mapping:</b>
-  <%= @map.to %>
-</p>
+<table border="1" cellpadding="5" cellspacing="1">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @map.mappings.each do |mapping| %>
+      <tr>
+        <td><%= mapping.from %></td>
+        <td><%= mapping.to %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <b>Mapping attribute:</b>
-  <%= @map.attr %>
-</p>
-
+<br />
 
 <%= link_to 'Edit', edit_map_path(@map) %> |
 <%= link_to 'Back', maps_path %>
