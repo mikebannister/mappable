@@ -1,8 +1,7 @@
-<h1>Mappings</h1>
+<h1><%= @map.subject.humanize %> <%= @map.attr.humanize.downcase %> mappings</h1>
 
 <table>
   <tr>
-    <th>Map</th>
     <th>From</th>
     <th>To</th>
     <th></th>
@@ -12,16 +11,15 @@
 
 <% @mappings.each do |mapping| %>
   <tr>
-    <td><%= mapping.map.subject %></td>
     <td><%= mapping.from %></td>
     <td><%= mapping.to %></td>
-    <td><%= link_to 'Show', mapping %></td>
+    <td><%= link_to 'Show', mapping_path(mapping, subject: @map.subject, attr: @map.attr.pluralize) %></td>
     <td><%= link_to 'Edit', edit_mapping_path(mapping) %></td>
-    <td><%= link_to 'Destroy', mapping, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', mapping_path(mapping, subject: @map.subject, attr: @map.attr.pluralize), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Mapping', new_mapping_path %>
+<%= link_to "New #{@map.subject.humanize.titleize} #{@map.attr.humanize.titleize} Mapping", new_mapping_path(subject: @map.subject, attr: @map.attr.pluralize) %>

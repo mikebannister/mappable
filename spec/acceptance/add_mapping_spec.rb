@@ -11,13 +11,11 @@ feature "Add mapping", %q{
   end
 
   scenario "Add mapping" do
-    visit "/mappable/mappings"
-
-    click_link "New Mapping"
+    visit "/mappable/account/names"
+    click_link "New Account Name Mapping"
 
     fill_in 'From', with: 'Old account name'
     fill_in 'To', with: 'New account name'
-    fill_in 'Map', with: @map.id
 
     click_button "Create Mapping"
 
