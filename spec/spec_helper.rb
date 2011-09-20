@@ -12,3 +12,11 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.mock_with :mocha
 end
+
+def clear_kernel_method(sym)
+  begin
+    Kernel.send :remove_method, sym
+    class << Kernel; self; end.send :remove_method, sym
+  rescue
+  end
+end
