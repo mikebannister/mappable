@@ -1,29 +1,29 @@
 require 'spec_helper'
 
 module Mappable
-  describe Route do
+  describe MapRoute do
     before do
       map = Mappable::Map.create!(from_mapping: 'legacy', to_mapping: 'current', name: 'account', mapping_attribute: 'name')
       Mappable::Mapping.create!(map: map, from: 'moof', to: 'doof')
     end
 
-    describe "#route_value_for_method_missing" do
-      it "should map value from the route in the direction inferred by the incoming method name which is normally passed in by method_missing" do
-        route = LegacyAccountName('moof')
-        route.route_value_for_method_missing(:to_current).should eq 'doof'
+    describe "#mapped_value_for_method_missing" do
+      it "should map value from the map route in the direction inferred by the incoming method name which is normally passed in by method_missing" do
+        map_route = LegacyAccountName('moof')
+        map_route.mapped_value_for_method_missing(:to_current).should eq 'doof'
 
-        route = CurrentAccountName('doof')
-        route.route_value_for_method_missing(:to_legacy).should eq 'moof'
+        map_route = CurrentAccountName('doof')
+        map_route.mapped_value_for_method_missing(:to_legacy).should eq 'moof'
       end
     end
 
-    describe "#route_method?" do
+    describe "#map_route_method?" do
       it "it should return true if the method starts with to_" do
-        LegacyAccountName('moof').route_method?(:to_anything).should be_true
+        LegacyAccountName('moof').map_route_method?(:to_anything).should be_true
       end
 
       it "it should return false if the method doesn't start with to_" do
-        LegacyAccountName('moof').route_method?(:anything_else).should be_false
+        LegacyAccountName('moof').map_route_method?(:anything_else).should be_false
       end
     end
     

@@ -1,6 +1,6 @@
 require "mappable/engine"
-require "mappable/route"
-require "mappable/router"
+require "mappable/map_route"
+require "mappable/map_router"
 
 module Mappable
 end

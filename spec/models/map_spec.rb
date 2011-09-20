@@ -15,10 +15,11 @@ module Mappable
     end
     
     describe "#after_save" do
-      it "should called Mappable::Router.build_routes!" do
-        Mappable::Router.expects(:build_routes!).times(2)
-        @map.save!
-        Mappable::Router.build_routes!
+      it "should load the new map routes" do
+        map = Mappable::Map.new(from_mapping: 'moof', to_mapping: 'doof', name: 'noof', mapping_attribute: 'aloof')
+        map.save!
+        Kernel.respond_to?(:MoofNoofAloof).should be_true
+        Kernel.respond_to?(:DoofNoofAloof).should be_true
       end
     end
   end

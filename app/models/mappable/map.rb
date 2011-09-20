@@ -3,7 +3,7 @@ module Mappable
     has_many :mappings
 
     after_save do
-      Mappable::Router.build_routes!
+      Mappable::MapRouter.build_map_routes!
     end
 
     def value_for(mapping_name, in_value)

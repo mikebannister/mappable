@@ -3,7 +3,7 @@ module Mappable
     isolate_namespace Mappable
     
     config.to_prepare do
-      Mappable::Router.build_routes!
+      Mappable::MapRouter.build_map_routes!
     end
   end
 end
