@@ -9,7 +9,7 @@ module Mappable
     
     describe "#build_map_routes!" do
       it "should build a map route for each side of each saved map" do
-        Mappable::Map.create!(from: 'legacy', to: 'current', name: 'account', attr: 'name')
+        Mappable::Map.create!(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
         
         Mappable::MapRouter.build_map_routes!
         
@@ -19,7 +19,7 @@ module Mappable
 
       it "should not build route maps if the tables don't exist yet, duh!" do
         Mappable::Map.stubs(:table_exists?).returns(false)
-        Mappable::Map.create!(from: 'legacy', to: 'current', name: 'account', attr: 'name')
+        Mappable::Map.create!(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
         
         Mappable::MapRouter.build_map_routes!
         
@@ -30,7 +30,7 @@ module Mappable
     
     describe "#build_map_route!" do
       it "should build a map route for the map info supplied" do
-        map = Mappable::Map.create!(from: 'legacy', to: 'current', name: 'account', attr: 'name')
+        map = Mappable::Map.create!(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
 
         Mappable::MapRouter.build_map_route!(:from, map)
         Mappable::MapRouter.build_map_route!(:to, map)

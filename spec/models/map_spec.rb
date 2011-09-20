@@ -3,7 +3,7 @@ require 'spec_helper'
 module Mappable
   describe Map do
     before do
-      @map = Mappable::Map.create!(from: 'legacy', to: 'current', name: 'account', attr: 'name')
+      @map = Mappable::Map.create!(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
       Mappable::Mapping.create!(map: @map, from: 'moof', to: 'doof')
     end
 
@@ -16,7 +16,7 @@ module Mappable
     
     describe "#after_save" do
       it "should load the new map routes" do
-        map = Mappable::Map.new(from: 'moof', to: 'doof', name: 'noof', attr: 'aloof')
+        map = Mappable::Map.new(subject: 'noof', attr: 'aloof', from: 'moof', to: 'doof')
         map.save!
         Kernel.respond_to?(:MoofNoofAloof).should be_true
         Kernel.respond_to?(:DoofNoofAloof).should be_true

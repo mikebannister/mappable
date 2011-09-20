@@ -12,7 +12,7 @@ module Mappable
       
       def build_map_route!(direction, map)
         mapping_name = map.send(direction.to_sym)
-        method_sym = "#{mapping_name}_#{map.name}_#{map.attr}".camelize.to_sym
+        method_sym = "#{mapping_name}_#{map.subject}_#{map.attr}".camelize.to_sym
         Kernel.send :define_method, method_sym do |in_value|
           Mappable::MapRoute.new(map, in_value)
         end

@@ -7,7 +7,7 @@ feature "Add mapping", %q{
 } do
 
   background do
-    @map = Mappable::Map.create!(from: 'legacy', to: 'current', name: 'account', attr: 'name')
+    @map = Mappable::Map.create!(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
   end
 
   scenario "Add mapping" do

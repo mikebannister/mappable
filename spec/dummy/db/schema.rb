@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(:version => 20110919042056) do
   add_index "mappable_mappings", ["map_id"], :name => "index_mappable_mappings_on_map_id"
 
   create_table "mappable_maps", :force => true do |t|
-    t.string   "name"
+    t.string   "subject"
+    t.string   "attr"
     t.string   "from"
     t.string   "to"
-    t.string   "attr"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

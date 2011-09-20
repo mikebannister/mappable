@@ -4,8 +4,8 @@ module Mappable
     model.delete(ids)
   end
 
-  account_map = Map.create(name: 'account', attr: 'name', from: 'legacy', to: 'current')
-  employee_map = Map.create(name: 'employee', attr: 'name', from: 'legacy', to: 'current')
+  account_map = Map.create(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
+  employee_map = Map.create(subject: 'employee', attr: 'name', from: 'legacy', to: 'current')
 
   Mapping.create(map: account_map, from: 'old account name', to: 'new account name')
   Mapping.create(map: employee_map, from: 'old employee name', to: 'new employee name')

@@ -24,7 +24,7 @@ This adds schema similar to
     end
 
     create_table "mappable_maps", :force => true do |t|
-      t.string   "name"
+      t.string   "subject"
       t.string   "from"
       t.string   "to"
       t.string   "attr"
@@ -41,10 +41,10 @@ You can use the UI available at the engine's mount point to add new maps and map
 #### Map ####
 
     id = 1
-    name = account
-    from = legacy
-    to = current
-    attr = name
+    subject = 'account'
+    attr = 'name'
+    from = 'legacy'
+    to = 'current'
 
 #### Mapping ####
 

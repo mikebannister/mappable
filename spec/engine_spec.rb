@@ -8,7 +8,7 @@ module Mappable
     end
     
     it "should preload map routes when it starts" do
-      Mappable::Map.create!(from: 'legacy', to: 'current', name: 'account', attr: 'name')
+      Mappable::Map.create!(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
       ActionDispatch::Reloader.prepare!
 
       Kernel.respond_to?(:LegacyAccountName).should be_true
