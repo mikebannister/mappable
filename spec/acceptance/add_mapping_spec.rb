@@ -20,6 +20,7 @@ feature "Add mapping", %q{
     fill_in 'Map', with: @map.id
 
     click_button "Create Mapping"
+
     page.should have_content "Mapping was successfully created."
   end
 end

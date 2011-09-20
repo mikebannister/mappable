@@ -20,7 +20,7 @@ module Mappable
       @mapping = Mapping.new(params[:mapping])
   
       if @mapping.save
-        redirect_to @mapping, notice: 'Mapping was successfully created.'
+        redirect_to mappings_url, notice: 'Mapping was successfully created.'
       else
         render action: "new"
       end
@@ -30,7 +30,7 @@ module Mappable
       @mapping = Mapping.find(params[:id])
   
       if @mapping.update_attributes(params[:mapping])
-        redirect_to @mapping, notice: 'Mapping was successfully updated.'
+        redirect_to mappings_url, notice: 'Mapping was successfully updated.'
       else
         render action: "edit"
       end
