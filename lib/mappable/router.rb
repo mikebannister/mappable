@@ -2,6 +2,8 @@ module Mappable
   class Router
     class << self
       def build_routes!
+        # this can get called before the database has been migrated
+        return unless Mappable::Map.table_exists?
         Mappable::Map.all.each do |map|
           build_route_for_map!(:from, map)
           build_route_for_map!(:to, map)
