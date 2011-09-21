@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Lightweight string mappings engine for Rails"
   s.description = "Lightweight string mappings engine for Rails"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 3.1.0"
 
