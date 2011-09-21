@@ -10,11 +10,15 @@ We use this tool to map account names in a legacy system, where we don't control
 
 ## Installation ##
 
-Install the gem
+Add it to your `Gemfile`
 
-    gem install mappable
+    gem 'mappable'
 
-Install the migrations
+Bundle it up
+
+    bundle install
+
+Install the migrations and apply them
 
     rake mappable:install:migrations
     rake db:migrate
@@ -29,20 +33,24 @@ The migrations will add tables similar to this
 
     create_table "mappable_maps", :force => true do |t|
       t.string   "subject"
+      t.string   "attr"
       t.string   "from"
       t.string   "to"
-      t.string   "attr"
     end
 
 Mount the engine
 
-    mount Mappable::Engine => '/maps'
+    mount Mappable::Engine => '/map'
 
 Definitions
 
  * **Mappings**: String pairs that map to each other
 
- * **Maps**: A group of mappings and relevant metadata
+    - [http://localhost:3000/map/account/name](http://localhost:3000/map/account/name)
+
+ * **Maps**: A group of mappings and relevant metadata.
+
+    - [http://localhost:3000/map](http://localhost:3000/maps)
 
 ## Example usage ##
 
@@ -71,3 +79,5 @@ Now you can map strings in either direction using the following grammar
 ## TODO ##
 
 Better indexing in migrations
+Rake task for installing views
+Add security features
