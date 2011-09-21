@@ -1,0 +1,20 @@
+Description:
+    Copy the views from mappable so you can override them
+
+Example:
+    rails generate mappable:views
+
+    This will create:
+        app/views/mappable
+        app/views/mappable/mappings
+        app/views/mappable/mappings/_form.html.erb
+        app/views/mappable/mappings/edit.html.erb
+        app/views/mappable/mappings/index.html.erb
+        app/views/mappable/mappings/new.html.erb
+        app/views/mappable/mappings/show.html.erb
+        app/views/mappable/maps
+        app/views/mappable/maps/_form.html.erb
+        app/views/mappable/maps/edit.html.erb
+        app/views/mappable/maps/index.html.erb
+        app/views/mappable/maps/new.html.erb
+        app/views/mappable/maps/show.html.erb

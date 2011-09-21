@@ -42,6 +42,10 @@ Mount the engine
 
     mount Mappable::Engine => '/map'
 
+You can use the included generator to copy the views if you'd like to customize them
+
+    rails generate mappable:views
+
 Definitions
 
  * **Mappings**: String pairs that map to each other
