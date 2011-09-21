@@ -1,4 +1,6 @@
 Mappable::Engine.routes.draw do
+  resources :maps, :path => "/"
+
   match "/:subject/:attr",
         to: 'mappings#index',
         as: 'mappings',
@@ -19,6 +21,5 @@ Mappable::Engine.routes.draw do
         as: 'mapping',
         via: 'get'
 
-  resources :maps, :path => "/"
   resources :mappings, only: [:edit, :destroy]
 end

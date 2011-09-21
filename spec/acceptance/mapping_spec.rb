@@ -1,9 +1,9 @@
 require 'acceptance/acceptance_helper'
 
-feature "Add mapping", %q{
+feature "Mapping", %q{
   In order to map data
   As an system user
-  I want to add new mappings to the system
+  I want to manage mappings
 } do
 
   background do
