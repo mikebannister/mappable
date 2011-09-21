@@ -7,17 +7,17 @@ feature "Add map", %q{
 } do
 
   scenario "Add map" do
-    visit "/mappable/maps"
+    visit "/mappable"
 
     click_link "New Map"
-
+    
     fill_in 'Subject', with: 'account'
     fill_in 'Attribute', with: 'name'
     fill_in 'From name', with: 'legacy'
     fill_in 'To name', with: 'system'
-
+    
     click_button "Create Map"
-
+    
     page.should have_content "Map was successfully created."
   end
 end

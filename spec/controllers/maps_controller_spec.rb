@@ -7,7 +7,7 @@ module Mappable
         it "redirects to the maps list" do
           post :create, :use_route => :mappable
           response.should_not redirect_to(Map.last) # rails default
-          response.should redirect_to('/mappable/maps')
+          response.should redirect_to('/mappable/')
         end
       end
     end
@@ -18,7 +18,7 @@ module Mappable
           map = Mappable::Map.create!(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
           put :update, id: map.id, :use_route => :mappable
           response.should_not redirect_to(map) # rails default
-          response.should redirect_to('/mappable/maps')
+          response.should redirect_to('/mappable/')
         end
       end
     end
