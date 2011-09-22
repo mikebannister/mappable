@@ -1,5 +1,5 @@
 module Mappable
-  class MappingsController < ApplicationController
+  class MappingsController < ::ApplicationController
     before_filter :load_map!, only: [:index, :new]
     
     def index
