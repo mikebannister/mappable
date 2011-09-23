@@ -54,7 +54,7 @@ module Mappable
     end
 
     describe "GET new" do
-      let(:mapping) { Mappable::Mapping.create!(from: 'Old account name', to: 'New account name') }
+      let(:mapping) { Mappable::Mapping.create!(map: map, from: 'Old account name', to: 'New account name') }
 
       it "should look up the map specified in params and assign it to @map" do
         map # load
@@ -76,7 +76,7 @@ module Mappable
         mapping # load
 
         lambda {
-          get :new, subject: 'account', attr: 'name', :use_route => :mappable
+          get :new, subject: 'no_account', attr: 'no_name', :use_route => :mappable
         }.should raise_error ActiveRecord::RecordNotFound
       end
     end
