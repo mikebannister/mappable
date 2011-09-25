@@ -11,7 +11,7 @@ feature "Mapping", %q{
   end
 
   scenario "Add mapping" do
-    visit "/mappable/account/names"
+    visit "/map/account/names"
     click_link "New Account Name Mapping"
 
     fill_in 'From', with: 'Old account name'

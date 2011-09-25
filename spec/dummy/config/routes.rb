@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-
-  mount Mappable::Engine => "/mappable"
+  mount Mappable::Engine => "/map"
+  
+  match "/" => redirect("/map")
 end

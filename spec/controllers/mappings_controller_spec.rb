@@ -36,7 +36,7 @@ module Mappable
       describe "with valid params" do
         it "redirects to the mappings list" do
           post :create, mapping: { map_id: map.id }, :use_route => :mappable
-          response.should redirect_to('/mappable/account/names')
+          response.should redirect_to('/map/account/names')
         end
       end
     end
@@ -48,7 +48,7 @@ module Mappable
           mapping = map.mappings.create!(from: 'moof', to: 'doof')
 
           put :update, id: mapping.id, :use_route => :mappable
-          response.should redirect_to('/mappable/account/names')
+          response.should redirect_to('/map/account/names')
         end
       end
     end

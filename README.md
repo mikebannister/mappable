@@ -85,3 +85,4 @@ Now you can map strings in either direction using the following grammar
 Better indexing in migrations
 Rake task for installing views
 Add security features
+Deal with going from/to when there's more than one to with the same name

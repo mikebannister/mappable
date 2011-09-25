@@ -7,7 +7,7 @@ feature "Map", %q{
 } do
 
   scenario "Add map" do
-    visit "/mappable"
+    visit "/map"
 
     click_link "New Map"
     
@@ -27,7 +27,7 @@ feature "Map", %q{
     end
 
     scenario "Edit map" do
-      visit "/mappable"
+      visit "/map"
 
       click_link "Edit"
     
