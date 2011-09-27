@@ -11,6 +11,14 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.mock_with :mocha
+
+  config.before(:all) do
+    DeferredGarbageCollection.start
+  end
+
+  config.after(:all) do
+    DeferredGarbageCollection.reconsider
+  end
 end
 
 def clear_kernel_method(sym)
