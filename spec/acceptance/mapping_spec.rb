@@ -12,6 +12,7 @@ feature "Mapping", %q{
 
   scenario "Add mapping" do
     visit "/map/account/names"
+
     click_link "New Account Name Mapping"
 
     fill_in 'From', with: 'Old account name'

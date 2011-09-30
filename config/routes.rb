@@ -21,5 +21,18 @@ Mappable::Engine.routes.draw do
         as: 'mapping',
         via: 'get'
 
-  resources :mappings, only: [:edit, :destroy]
+  match "/:subject/:attr/:id/edit",
+        to: 'mappings#edit',
+        as: 'edit_mapping',
+        via: 'get'
+
+  match "/:subject/:attr/:id",
+        to: 'mappings#update',
+        as: 'mapping',
+        via: 'put'
+
+  match "/:subject/:attr/:id",
+        to: 'mappings#destroy',
+        as: 'mapping',
+        via: 'delete'
 end
