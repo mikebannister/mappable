@@ -82,6 +82,7 @@ Now you can map strings in either direction using the following grammar
 
 ## TODO ##
 
+Move rebuilding of maps to an initializer and/or add notes to readme about why Map.all gets called on every request in development
 Better indexing in migrations
 Rake task for installing views
 Add security features
