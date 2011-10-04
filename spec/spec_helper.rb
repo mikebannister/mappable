@@ -28,3 +28,19 @@ def clear_kernel_method(sym)
   rescue
   end
 end
+
+def add_view(root, file, content)
+  if root == :engine
+    root_path = File.expand_path('../../..', __FILE__)
+  elsif root == :main_app
+    root_path = Rails.root
+  end
+
+  view_root = File.join(root_path, 'app/views')
+  view_full_path = "#{File.join(view_root, file)}.html.erb"
+  view_full_path_dir = File.expand_path('..', view_full_path)
+
+  FileUtils.mkdir_p(view_full_path_dir)
+  FileUtils.touch(view_full_path)
+  File.open(view_full_path, 'w') {|f| f.write(content) }
+end

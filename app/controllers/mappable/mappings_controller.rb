@@ -48,7 +48,7 @@ module Mappable
     private
 
     def load_map!
-      @map = Map.find_by_subject_and_attr!(params[:subject], params[:attr].try(:singularize))
+      @map = Map.find_by_subject_and_attr!(@subject, @attr)
     end
   end
 end
