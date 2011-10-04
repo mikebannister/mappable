@@ -12,16 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :from %><br />
+    <%= f.label :from, "#{@mapping.map.from.humanize} #{@mapping.map.subject.humanize.downcase} #{@mapping.map.attr.humanize.downcase}" %><br />
     <%= f.text_field :from %>
   </div>
+
   <div class="field">
-    <%= f.label :to %><br />
+    <%= f.label :to, "#{@mapping.map.to.humanize} #{@mapping.map.subject.humanize.downcase} #{@mapping.map.attr.humanize.downcase}" %><br />
     <%= f.text_field :to %>
   </div>
+
   <%= f.hidden_field :map_id %>
+
   <div class="actions">
     <% label = @mapping.new_record? ? "Create Mapping" : "Update Mapping" %>
     <%= f.submit label  %>
   </div>
+
 <% end %>

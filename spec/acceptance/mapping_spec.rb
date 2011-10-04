@@ -15,8 +15,8 @@ feature "Mapping", %q{
 
     click_link "New Account Name Mapping"
 
-    fill_in 'From', with: 'Old account name'
-    fill_in 'To', with: 'New account name'
+    fill_in 'Legacy account name', with: 'Old account name'
+    fill_in 'Current account name', with: 'New account name'
 
     click_button "Create Mapping"
 
