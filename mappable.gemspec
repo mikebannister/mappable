@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "launchy", "~> 2.0.5"
   s.add_development_dependency "guard-rspec", "~> 0.4.5"
   s.add_development_dependency "guard-bundler", "~> 0.1.3"
+  s.add_development_dependency "genspec", "~> 0.2.1"
 end

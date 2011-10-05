@@ -46,6 +46,10 @@ You can use the included generator to copy the views if you'd like to customize 
 
     rails generate mappable:views
 
+If you want to override the views for `mappings` that belong to a specific `map` puts them in `app/views/mappable/[MAP_NAME]/mappings`. You can also generate these scoped views:
+
+    rails generate mappable:views account_names
+
 Definitions
 
  * **Mappings**: String pairs that map to each other
@@ -84,6 +88,5 @@ Now you can map strings in either direction using the following grammar
 
 Move rebuilding of maps to an initializer and/or add notes to readme about why Map.all gets called on every request in development
 Better indexing in migrations
-Rake task for installing views
 Add security features
 Deal with going from/to when there's more than one to with the same name

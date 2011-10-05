@@ -1,6 +1,7 @@
 module Mappable
-  class MappingsController < Mappable::Controller
-    before_filter :load_map!, only: [:index, :new]
+  class MappingsController < ::ApplicationController
+    before_filter :load_map_attributes
+    before_filter :load_map, only: [:index, :new]
 
     def index
       @mappings = @map.mappings
@@ -47,8 +48,28 @@ module Mappable
 
     private
 
-    def load_map!
-      @map = Map.find_by_subject_and_attr!(@subject, @attr)
-    end
+      def load_map
+        @map = Map.find_by_subject_and_attr!(params[:subject], params[:attr].singularize)
+      end
+
+      def load_map_attributes
+        @subject = params[:subject]
+        @attr = params[:attr].singularize
+      end
+
+      def render(*args, &block)
+        options = _normalize_render(*args, &block)
+        options[:prefixes].unshift map_specific_view_path
+        self.response_body = render_to_body(options)
+      end
+
+      def map_specific_view_path
+        "mappable/#{@subject}_#{@attr.pluralize}/#{engine_controller}"
+      end
+
+      def engine_controller
+        params[:controller].split("/").last
+      end
+
   end
 end

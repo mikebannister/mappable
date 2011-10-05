@@ -18,3 +18,15 @@ Example:
         app/views/mappable/maps/index.html.erb
         app/views/mappable/maps/new.html.erb
         app/views/mappable/maps/show.html.erb
+
+    rails generate mappable:views account_names
+
+    This will create:
+        app/views/mappable
+        app/views/mappable/account_names
+        app/views/mappable/account_names/mappings
+        app/views/mappable/account_names/mappings/_form.html.erb
+        app/views/mappable/account_names/mappings/edit.html.erb
+        app/views/mappable/account_names/mappings/index.html.erb
+        app/views/mappable/account_names/mappings/new.html.erb
+        app/views/mappable/account_names/mappings/show.html.erb

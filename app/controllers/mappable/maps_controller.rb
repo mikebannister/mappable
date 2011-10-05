@@ -1,5 +1,5 @@
 module Mappable
-  class MapsController < Mappable::Controller
+  class MapsController < ::ApplicationController
     def index
       @maps = Map.all
     end

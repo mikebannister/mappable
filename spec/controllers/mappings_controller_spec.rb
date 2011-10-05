@@ -7,7 +7,7 @@ module Mappable
     describe "GET index" do
       it "should look up the map specified in params and assign it to @map" do
         map # load
-        
+
         get :index, subject: 'account', attr: 'name', :use_route => :mappable
         assigns(:map).should eq map
       end
@@ -17,7 +17,7 @@ module Mappable
           get :index, subject: 'account', attr: 'name', :use_route => :mappable
         }.should raise_error ActiveRecord::RecordNotFound
       end
-      
+
       it "should lookup and assign the specified map's mappings to @mappings" do
         map # load
         mapping = map.mappings.create!(from: 'moof1', to: 'doof1')
@@ -26,16 +26,51 @@ module Mappable
 
         another_map = Mappable::Map.create!(subject: 'employee', attr: 'name', from: 'legacy', to: 'current')
         mapping = another_map.mappings.create!(from: 'moof1', to: 'doof1')
-        
+
         get :index, subject: 'account', attr: 'name', :use_route => :mappable
         assigns(:mappings).should have_exactly(3).items
+      end
+
+      context "load_map_attributes" do
+        before(:each) { map } # load
+
+        it "assigns params[:subject] to @subject" do
+          get :index, subject: 'account', attr: 'name', :use_route => :mappable
+          assigns[:subject].should eq "account"
+        end
+
+        it "assigns the singular form params[:attr] to @attr" do
+          get :index, subject: 'account', attr: 'names', :use_route => :mappable
+          assigns[:attr].should eq "name"
+        end
+
+        it "assigns params[:subject] to @attr" do
+          get :index, subject: 'account', attr: 'name', :use_route => :mappable
+          assigns[:attr].should eq "name"
+        end
+      end
+
+      describe "when views are rendered" do
+        render_views
+
+        it "should render the engine's template by default" do
+          map # load
+          get :index, subject: 'account', attr: 'name', :use_route => :mappable
+          response.body.should have_content "Account name mappings"
+        end
+
+        it "should render the templates in view directory named after the map" do
+          Mappable::Map.create!(subject: 'employee', attr: 'name', from: 'legacy', to: 'current')
+          get :index, subject: 'employee', attr: 'names', :use_route => :mappable
+          response.body.should have_content "mappings::from main app's map name dir"
+        end
       end
     end
 
     describe "POST create" do
       describe "with valid params" do
         it "redirects to the mappings list" do
-          post :create, mapping: { map_id: map.id }, :use_route => :mappable
+          post :create, subject: 'account', attr: 'name', mapping: { map_id: map.id }, :use_route => :mappable
           response.should redirect_to('/map/account/names')
         end
       end
@@ -47,7 +82,7 @@ module Mappable
           map # load
           mapping = map.mappings.create!(from: 'moof', to: 'doof')
 
-          put :update, id: mapping.id, :use_route => :mappable
+          put :update, subject: 'account', attr: 'name', id: mapping.id, :use_route => :mappable
           response.should redirect_to('/map/account/names')
         end
       end

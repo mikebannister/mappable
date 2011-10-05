@@ -1,20 +1,39 @@
 module Mappable
   class ViewsGenerator < Rails::Generators::NamedBase
     source_root File.expand_path('../../../../../app/views/mappable', __FILE__)
-    argument :name, :type => :string, :default => 'views'
+    argument :name, :type => :string, :default => ''
 
     def copy_view_files
-      empty_directory "app/views/mappable/maps"
-      copy_file "maps/_form.html.erb", "app/views/mappable/maps/_form.html.erb"
-      copy_file "maps/edit.html.erb", "app/views/mappable/maps/edit.html.erb"
-      copy_file "maps/index.html.erb", "app/views/mappable/maps/index.html.erb"
-      copy_file "maps/new.html.erb", "app/views/mappable/maps/new.html.erb"
-      copy_file "maps/show.html.erb", "app/views/mappable/maps/show.html.erb"
-      empty_directory "app/views/mappable/mappings"
-      copy_file "mappings/edit.html.erb", "app/views/mappable/mappings/edit.html.erb"
-      copy_file "mappings/index.html.erb", "app/views/mappable/mappings/index.html.erb"
-      copy_file "mappings/new.html.erb", "app/views/mappable/mappings/new.html.erb"
-      copy_file "mappings/show.html.erb", "app/views/mappable/mappings/show.html.erb"
+
+      map_files = %w[
+        maps/_form
+        maps/edit
+        maps/index
+        maps/new
+        maps/show
+      ]
+
+      mapping_files = %w[
+        mappings/_form
+        mappings/edit
+        mappings/index
+        mappings/new
+        mappings/show
+      ]
+
+      files = mapping_files
+      files += map_files if name.blank?
+
+      files.each do |file|
+        from_path = "#{file}.html.erb"
+
+        path_parts = ["mappable"]
+        path_parts.push(name) unless name.blank? # include the name as namespace if not blank
+        path_parts.push("#{file}.html.erb")
+
+        to_path = File.join('app/views', *path_parts)
+        copy_file from_path, to_path
+      end
     end
   end
 end
