@@ -46,7 +46,7 @@ You can use the included generator to copy the views if you'd like to customize 
 
     rails generate mappable:views
 
-If you want to override the views for `mappings` that belong to a specific `map` puts them in `app/views/mappable/[MAP_NAME]/mappings`. You can also generate these scoped views:
+If you want to override the views for `mappings` that belong to a specific `map` puts them in `app/views/mappable/[MAP_NAME]/mappings`. This is most useful for overriding the mappings/_form partial. Often one side of the mapping is a controlled value that can be selected from a select box element, etc. You can generate these scoped views with:
 
     rails generate mappable:views account_names
 
