@@ -1,17 +1,14 @@
-<h1>Edit <%= @mapping.map.subject.humanize.titleize %> <%= @mapping.map.attr.humanize.titleize %> Mappings</h1>
+<h1><%= "#{@mapping.parent_map.subject.humanize.titleize} #{@mapping.parent_map.attr.humanize.titleize} Mapping" %></h1>
 
 <p>
-  <b>Map:</b>
-  <%= @mapping.parent_map.subject %>
-</p>
-
-<p>
-  <b><%= @mapping.map.from.humanize %>:</b>
+  <b><%= "#{@mapping.map.from.humanize} #{@mapping.parent_map.subject.humanize.downcase} #{@mapping.parent_map.attr.humanize.downcase}" %>:</b>
+  <br />
   <%= @mapping.from %>
 </p>
 
 <p>
-  <b><%= @mapping.map.to.humanize %>:</b>
+  <b><%= "#{@mapping.map.to.humanize} #{@mapping.parent_map.subject.humanize.downcase} #{@mapping.parent_map.attr.humanize.downcase}" %>:</b>
+  <br />
   <%= @mapping.to %>
 </p>
 

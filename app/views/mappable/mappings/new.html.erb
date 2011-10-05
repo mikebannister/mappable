@@ -1,4 +1,4 @@
-<h1>New mapping</h1>
+<h1><%= "New #{@mapping.parent_map.subject.humanize.titleize} #{@mapping.parent_map.attr.humanize.titleize} Mapping" %></h1>
 
 <%= render 'form' %>
 

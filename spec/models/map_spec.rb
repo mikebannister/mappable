@@ -17,7 +17,7 @@ module Mappable
           @map.value_for(:legacy, 'doof').should eq 'moof'
         end
       end
-    
+
       describe "#after_save" do
         it "should load the new map routes" do
           map = Mappable::Map.new(subject: 'noof', attr: 'aloof', from: 'moof', to: 'doof')
@@ -26,9 +26,9 @@ module Mappable
           Kernel.respond_to?(:DoofNoofAloof).should be_true
         end
       end
-      
+
     end
-    
+
     describe "#cached_mappings" do
       it "should preload all child mappings in both directions" do
         Mappable::Mapping.create!(map: @map, from: 'foo', to: 'bar')
