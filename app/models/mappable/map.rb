@@ -24,7 +24,9 @@ module Mappable
       direction = :from if to.to_sym == mapping_name
       direction = :to if from.to_sym == mapping_name
       if direction
-        cached_mappings[direction][in_value.downcase]
+        mapping = cached_mappings[direction]
+        key = in_value.downcase
+        mapping.nil? ? nil : mapping[key]
       end
     end
   end

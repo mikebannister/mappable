@@ -6,27 +6,33 @@ module Mappable
       @map = Mappable::Map.create!(subject: 'account', attr: 'name', from: 'legacy', to: 'current')
     end
 
-    context "given a mapping" do
-      before do
+    describe "#value_for" do
+      it "should return the value for value given" do
         Mappable::Mapping.create!(map: @map, from: 'moof', to: 'doof')
+        
+        @map.value_for(:current, 'moof').should eq 'doof'
+        @map.value_for(:legacy, 'doof').should eq 'moof'
       end
 
-      describe "#value_for" do
-        it "should return the value for " do
-          @map.value_for(:current, 'moof').should eq 'doof'
-          @map.value_for(:legacy, 'doof').should eq 'moof'
-        end
+      it "should return nil if there's no mapping available" do
+        Mappable::Mapping.create!(map: @map, from: 'moof', to: 'doof')
+        
+        @map.value_for(:current, 'XXX').should eq nil
       end
 
-      describe "#after_save" do
-        it "should load the new map routes" do
-          map = Mappable::Map.new(subject: 'noof', attr: 'aloof', from: 'moof', to: 'doof')
-          map.save!
-          Kernel.respond_to?(:MoofNoofAloof).should be_true
-          Kernel.respond_to?(:DoofNoofAloof).should be_true
-        end
+      it "should return nil if there's 0 mappings in the system" do
+        @map.value_for(:current, 'XXX').should eq nil
       end
+    end
 
+    describe "#after_save" do
+      it "should load the new map routes" do
+        Mappable::Mapping.create!(map: @map, from: 'moof', to: 'doof')
+        map = Mappable::Map.new(subject: 'noof', attr: 'aloof', from: 'moof', to: 'doof')
+        map.save!
+        Kernel.respond_to?(:MoofNoofAloof).should be_true
+        Kernel.respond_to?(:DoofNoofAloof).should be_true
+      end
     end
 
     describe "#cached_mappings" do
