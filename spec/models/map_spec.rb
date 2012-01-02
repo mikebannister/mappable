@@ -51,7 +51,7 @@ module Mappable
           }
         }
 
-        @map.cached_mappings.should eq expected_mapping
+        @map.computed_mappings.should eq expected_mapping
       end
 
       it "should use lowercase keys and preserve case of the value" do
@@ -69,7 +69,7 @@ module Mappable
           }
         }
 
-        @map.cached_mappings.should eq expected_mapping
+        @map.computed_mappings.should eq expected_mapping
       end
     end
   end

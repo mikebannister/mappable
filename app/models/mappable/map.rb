@@ -6,17 +6,15 @@ module Mappable
       Mappable::MapRouter.build_map_routes!
     end
 
-    def cached_mappings
-      @cache ||= begin
-        self.mappings.inject({}) do |cache, m|
-          cache[:to] ||= {}
-          cache[:to][m.to.downcase] = m.from
+    def computed_mappings
+      self.mappings.reload.inject({}) do |cache, m|
+        cache[:to] ||= {}
+        cache[:to][m.to.downcase] = m.from
 
-          cache[:from] ||= {}
-          cache[:from][m.from.downcase] = m.to
-          
-          cache
-        end
+        cache[:from] ||= {}
+        cache[:from][m.from.downcase] = m.to
+        
+        cache
       end
     end
 
@@ -24,7 +22,7 @@ module Mappable
       direction = :from if to.to_sym == mapping_name
       direction = :to if from.to_sym == mapping_name
       if direction
-        mapping = cached_mappings[direction]
+        mapping = computed_mappings[direction]
         key = in_value.downcase
         mapping.nil? ? nil : mapping[key]
       end
